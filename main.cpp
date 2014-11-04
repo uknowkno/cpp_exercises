@@ -35,3 +35,23 @@ void reverse_string(char * foo){
         head++;
     }
 }
+
+
+//1.3
+//Given two strings, write a method to decide if one is a permuation of the other
+int is_permuation(char a[],char b[]){
+    int table[128] = {0};
+    if (strlen(a)!=strlen(b))           //if length of two strings are not equal
+        return false;
+    for (int i=0;i<strlen(a);i++){      //count charaters appear in string a
+        table[int(a[i])]++;
+    }
+    for (int i=0;i<strlen(b);i++){
+        table[int(b[i])]--;
+    }
+    for (int i=0;i<128;i++){
+        if (table[i]!=0)
+            return false;
+    }
+    return true;
+}
